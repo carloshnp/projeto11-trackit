@@ -29,10 +29,10 @@ export default function Cadastro() {
     request
       .then((ans) => {
         navigate("/");
-        console.log(ans.data)
+        console.log(ans.data);
       })
       .catch((err) => {
-        console.log(err.response.data)
+        console.log(err.response.data);
       });
   }
 

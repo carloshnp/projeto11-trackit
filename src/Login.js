@@ -1,14 +1,16 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import logo from "./img/Logo.png";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import ImageContext from "./App";
 
 export default function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  // const setUserImage = useContext(UserContext);
 
   function login(e) {
     e.preventDefault();
@@ -24,6 +26,7 @@ export default function Login() {
 
     request
       .then((ans) => {
+        // setUserImage(ans.data.image);
         navigate("/habitos");
         console.log(ans.data);
       })

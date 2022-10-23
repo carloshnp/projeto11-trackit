@@ -1,45 +1,38 @@
-import axios from "axios"
-import styled from "styled-components"
-import logo from './img/TrackIt.png'
+import axios from "axios";
+import styled from "styled-components";
+import TopBar from "./TopBar";
+import NovoHabito from "./NovoHabito";
+import FooterBar from "./FooterBar";
 
 export default function Habitos() {
-    return (
-        <Container>
-            <TopBar>
-                <img src={logo} alt={"TrackIt"} />
-            </TopBar>
-            Habitos
-            <FooterBar>
-                <button>Habitos</button>
-                <button>Hoje</button>
-                <button>Histórico</button>
-            </FooterBar>
-        </Container>
-    )
-};
+  return (
+    <Container>
+      <TopBar />
+      <AdicionarHabito>
+        <p>Meus hábitos</p>
+        <button>+</button>
+      </AdicionarHabito>
+      <NovoHabito />
+      <p>
+        Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para
+        começar a trackear!
+      </p>
+      <FooterBar />
+    </Container>
+  );
+}
 
 const Container = styled.div`
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-`
+  height: 100vh;
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+  background-color: #f2f2f2;
+`;
 
-const TopBar = styled.div`
-    width: 100%;
-    height: 70px;
-    display: flex;
-    justify-content: space-between;
-    background-color: #126BA5;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
-
-    img {
-        width: 97px
-    }
-`
-
-const FooterBar = styled.div`
-    width: 100%;
-    height: 70px;
-    display: flex;
-    background-color: #FFFFFF;
-`
+const AdicionarHabito = styled.div`
+  margin: 28px 17px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
