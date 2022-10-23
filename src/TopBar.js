@@ -1,12 +1,13 @@
 import styled from "styled-components";
-import { useContext } from "react";
+import { useUserContext } from "./Usuario";
 
 export default function TopBar() {
-  // const userImage = useContext(UserContext)
+  const { user } = useUserContext();
+  console.log(user.image);
   return (
     <Container>
       <p>TrackIt</p>
-      {/* <img src={userImage} alt={"profileImage"} /> */}
+      <img src={user.image} alt={"profileImage"} />
     </Container>
   );
 }
@@ -23,15 +24,13 @@ const Container = styled.div`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 
   p {
-    margin-top: 10px;
-    margin-left: 18px;
+    margin: 10px 0 0 18px;
     height: 49px;
     font-size: 38px;
   }
 
   img {
-    margin-top: 9px;
-    margin-rigth: 18px;
+    margin: 9px 18px 0 0;
     width: 51px;
     height: 51px;
     border-radius: 98.5px;

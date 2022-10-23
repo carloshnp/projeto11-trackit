@@ -1,16 +1,16 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import logo from "./img/Logo.png";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import ImageContext from "./App";
+import { useUserContext } from "./Usuario";
 
 export default function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const setUserImage = useContext(UserContext);
+  const {setUser} = useUserContext();
 
   function login(e) {
     e.preventDefault();
@@ -26,7 +26,15 @@ export default function Login() {
 
     request
       .then((ans) => {
-        // setUserImage(ans.data.image);
+        const userObj = {
+          id: ans.data.id,
+          name: ans.data.name,
+          image: ans.data.image,
+          email: ans.data.email,
+          token: ans.data.token,
+        };
+        setUser(userObj);
+        localStorage.setItem("user", JSON.stringify(userObj));
         navigate("/habitos");
         console.log(ans.data);
       })
