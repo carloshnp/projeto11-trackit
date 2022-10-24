@@ -10,7 +10,13 @@ export default function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const {setUser} = useUserContext();
+  const { setUser } = useUserContext();
+
+  const userStorage = localStorage.getItem("user");
+
+  if (userStorage) {
+    navigate("/habitos");
+  }
 
   function login(e) {
     e.preventDefault();
