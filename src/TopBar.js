@@ -22,11 +22,13 @@ const Container = styled.div`
   justify-content: space-between;
   background-color: #126ba5;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  font-family: 'Playball', cursive;
 
   p {
-    margin: 10px 0 0 18px;
+    margin: 15px 0 0 18px;
     height: 49px;
     font-size: 38px;
+    color: #ffffff;
   }
 
   img {

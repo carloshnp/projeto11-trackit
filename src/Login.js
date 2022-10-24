@@ -79,6 +79,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: "Lexend Deca", sans-serif;
 `;
 
 const Logo = styled.img`

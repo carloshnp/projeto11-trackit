@@ -32,14 +32,14 @@ export default function Habitos() {
     <Container>
       <TopBar />
       <AdicionarHabito>
-        <p>Meus hábitos</p>
+        <h1>Meus hábitos</h1>
         <button onClick={() => setCreateHabit(true)}>+</button>
       </AdicionarHabito>
       {createHabit && <NovoHabito setCreateHabit={setCreateHabit} />}
-      <p>
+      <h2>
         Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para
         começar a trackear!
-      </p>
+      </h2>
       {userHabits.map(MeuHabito)}
       <FooterBar />
     </Container>
@@ -52,6 +52,18 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #f2f2f2;
+  font-family: "Lexend Deca", sans-serif;
+
+  h1 {
+    color: #126BA5;
+    font-size: 22px;
+  }
+
+  h2 {
+    margin-left: 17px;
+    color: #666666;
+    font-size: 18px;
+  }
 `;
 
 const AdicionarHabito = styled.div`
@@ -63,6 +75,13 @@ const AdicionarHabito = styled.div`
   button {
     width: 40px;
     height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    background-color: #52B6FF;
+    font-size: 28px;
+    border: none;
     border-radius: 5px;
   }
 `;

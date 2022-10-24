@@ -35,7 +35,7 @@ export default function MeuHabito(habit) {
 
   return (
     <Container>
-      <h1>{name}</h1>
+      <h3>{name}</h3>
       <ButtonContainer>{weekdaynumber.map(weekdayRender)}</ButtonContainer>
       <TrashIcon onClick={() => deletarHabito(id)}>
         <IconContext.Provider value={{ color: "#666666", size: "14px" }}>
@@ -48,15 +48,20 @@ export default function MeuHabito(habit) {
 
 const Container = styled.div`
   width: 340px;
-  height: 91px;
-  margin-top: 10px;
-  padding: 14px;
+  height: auto;
+  margin: 10px 15px;
+  padding: 14px 0px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   position: relative;
   background-color: #ffffff;
   border-radius: 5px;
+  font-family: "Lexend Deca", sans-serif;
 
-  h1 {
+  h3 {
     color: #666666;
+    margin-left: 15px;
     margin-bottom: 8px;
     font-size: 20px;
   }

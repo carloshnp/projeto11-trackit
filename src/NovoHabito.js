@@ -86,12 +86,13 @@ export default function NovoHabito(props) {
 
 const Container = styled.div`
   height: 180px;
-  margin: 0px 18px;
+  margin: 0px 18px 28px;
   position: relative;
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
   border-radius: 5px;
+  font-family: "Lexend Deca", sans-serif;
 
   input {
     width: 303px;
