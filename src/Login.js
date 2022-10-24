@@ -10,12 +10,13 @@ export default function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setUser } = useUserContext();
+  const { setUser, refresh, setRefresh } = useUserContext();
 
   const userStorage = localStorage.getItem("user");
 
   if (userStorage) {
-    navigate("/habitos");
+    setRefresh(!refresh)
+    navigate("/hoje");
   }
 
   function login(e) {
@@ -41,7 +42,8 @@ export default function Login() {
         };
         setUser(userObj);
         localStorage.setItem("user", JSON.stringify(userObj));
-        navigate("/habitos");
+        setRefresh(!refresh)
+        navigate("/hoje");
         console.log(ans.data);
       })
       .catch((err) => {

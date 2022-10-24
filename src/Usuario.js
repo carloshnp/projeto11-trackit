@@ -26,6 +26,7 @@ const UserContextProvider = ({ children }) => {
     });
     request
       .then((ans) => {
+        console.log(ans.data);
         setTodayHabits(ans.data);
         let total = 0;
         let completedHabits = 0;

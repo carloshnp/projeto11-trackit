@@ -8,7 +8,7 @@ import { useUserContext } from "./Usuario";
 import MeuHabito from "./MeuHabito";
 
 export default function Habitos() {
-  const { user, refresh } = useUserContext();
+  const { user, refresh, setRefresh } = useUserContext();
   const [userHabits, setUserHabits] = useState([]);
   const [createHabit, setCreateHabit] = useState(false);
   console.log(userHabits);
@@ -22,6 +22,7 @@ export default function Habitos() {
     request
       .then((ans) => {
         setUserHabits(ans.data);
+        setRefresh(!refresh)
       })
       .catch((err) => {
         console.log(err.response.data);
@@ -52,6 +53,8 @@ const Container = styled.div`
   margin-top: 70px;
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 0;
   background-color: #f2f2f2;
   font-family: "Lexend Deca", sans-serif;
 
@@ -86,3 +89,5 @@ const AdicionarHabito = styled.div`
     border-radius: 5px;
   }
 `;
+
+export {Container}

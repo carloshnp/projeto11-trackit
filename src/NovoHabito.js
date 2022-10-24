@@ -98,6 +98,7 @@ const Container = styled.div`
     width: 303px;
     height: 45px;
     margin: 18px 0 0 15px;
+    padding-left: 11px;
     border: 1px solid #d4d4d4;
     border-radius: 5px;
     color: #666666;

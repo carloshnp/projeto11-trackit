@@ -9,19 +9,16 @@ import TodayHabit from "./TodayHabit";
 
 export default function Hoje() {
   const { todayProgress, todayHabits } = useUserContext();
+  console.log(todayHabits);
 
   const today = dayjs().locale("pt-br").format("dddd, DD/MM");
   const upperToday = today[0].toUpperCase() + today.substring(1);
 
-  function Counter(){
-    if(todayProgress === 0 || isNaN(todayProgress) ){
-      return(
-        <p>Nenhum hábito concluído ainda</p>
-      )
-    } else{
-      return(
-        <p className="green">{todayProgress}% dos hábitos concluídos</p>
-      )
+  function Counter() {
+    if (todayProgress === 0 || isNaN(todayProgress)) {
+      return <p>Nenhum hábito concluído ainda</p>;
+    } else {
+      return <p className="green">{todayProgress}% dos hábitos concluídos</p>;
     }
   }
 
@@ -32,9 +29,7 @@ export default function Hoje() {
         <h1>{upperToday}</h1>
         <Counter />
       </TextContainer>
-      <TodayHabits>
-        {todayHabits.map(TodayHabit)}
-      </TodayHabits>
+      <TodayHabits>{todayHabits.map(TodayHabit)}</TodayHabits>
       <FooterBar />
     </Container>
   );
@@ -43,10 +38,39 @@ export default function Hoje() {
 const Container = styled.div`
   height: 100vh;
   margin-top: 70px;
+  padding: 28px 17px 110px 17px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 0;
+  background-color: #f2f2f2;
+  font-family: "Lexend Deca", sans-serif;
 `;
 
-const TextContainer = styled.div``;
+const TextContainer = styled.div`
+  width: 340px;
 
-const TodayHabits = styled.div``;
+  h1 {
+    color: #126ba5;
+    font-size: 23px;
+  }
+
+  p {
+    color: #bababa;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .green {
+    color: #8fc549;
+  }
+`;
+
+const TodayHabits = styled.div`
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 0;
+`;
