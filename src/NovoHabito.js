@@ -135,3 +135,5 @@ const SubmitContainer = styled.div`
     background-color: ${(props) => props.bgColor};
   }
 `;
+
+export { DayButton, ButtonContainer }

@@ -5,6 +5,7 @@ import NovoHabito from "./NovoHabito";
 import FooterBar from "./FooterBar";
 import { useEffect, useState } from "react";
 import { useUserContext } from "./Usuario";
+import MeuHabito from "./MeuHabito";
 
 export default function Habitos() {
   const { user } = useUserContext();
@@ -39,7 +40,7 @@ export default function Habitos() {
         Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para
         começar a trackear!
       </p>
-      {userHabits.map((habit) => { return <p>{habit.name}</p> })}
+      {userHabits.map(MeuHabito)}
       <FooterBar />
     </Container>
   );
