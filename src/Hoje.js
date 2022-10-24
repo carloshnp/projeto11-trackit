@@ -1,32 +1,52 @@
-import axios from "axios"
-import styled from "styled-components"
-import FooterBar from "./FooterBar"
+import axios from "axios";
+import dayjs from "dayjs";
+import "dayjs/locale/pt-br";
+import styled from "styled-components";
+import TopBar from "./TopBar";
+import FooterBar from "./FooterBar";
+import { useUserContext } from "./Usuario";
+import TodayHabit from "./TodayHabit";
 
 export default function Hoje() {
-    return (
-        <Container>
-            <TopBar />
-            Hoje
-            <FooterBar />
-        </Container>
-    )
-};
+  const { todayProgress, todayHabits } = useUserContext();
+
+  const today = dayjs().locale("pt-br").format("dddd, DD/MM");
+  const upperToday = today[0].toUpperCase() + today.substring(1);
+
+  function Counter(){
+    if(todayProgress === 0 || isNaN(todayProgress) ){
+      return(
+        <p>Nenhum hábito concluído ainda</p>
+      )
+    } else{
+      return(
+        <p className="green">{todayProgress}% dos hábitos concluídos</p>
+      )
+    }
+  }
+
+  return (
+    <Container>
+      <TopBar />
+      <TextContainer>
+        <h1>{upperToday}</h1>
+        <Counter />
+      </TextContainer>
+      <TodayHabits>
+        {todayHabits.map(TodayHabit)}
+      </TodayHabits>
+      <FooterBar />
+    </Container>
+  );
+}
 
 const Container = styled.div`
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-`
+  height: 100vh;
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+`;
 
-const TopBar = styled.div`
-    width: 100%;
-    height: 70px;
-    display: flex;
-    justify-content: space-between;
-    background-color: #126BA5;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+const TextContainer = styled.div``;
 
-    img {
-        width: 97px
-    }
-`
+const TodayHabits = styled.div``;

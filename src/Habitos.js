@@ -36,10 +36,11 @@ export default function Habitos() {
         <button onClick={() => setCreateHabit(true)}>+</button>
       </AdicionarHabito>
       {createHabit && <NovoHabito setCreateHabit={setCreateHabit} />}
+      {userHabits.length === 0 && (
       <h2>
         Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para
         começar a trackear!
-      </h2>
+      </h2>)}
       {userHabits.map(MeuHabito)}
       <FooterBar />
     </Container>
