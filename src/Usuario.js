@@ -4,6 +4,7 @@ const UserContext = createContext();
 
 const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [refresh, setRefresh] = useState(true);
 
   useEffect(() => {
     const userStorage = localStorage.getItem("user");
@@ -14,7 +15,11 @@ const UserContextProvider = ({ children }) => {
     }
   }, []);
 
-  return <UserContext.Provider value={{user, setUser}}>{children}</UserContext.Provider>;
+  return (
+    <UserContext.Provider value={{ user, setUser, refresh, setRefresh }}>
+      {children}
+    </UserContext.Provider>
+  );
 };
 
 const useUserContext = () => {

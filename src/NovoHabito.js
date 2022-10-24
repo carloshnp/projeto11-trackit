@@ -6,23 +6,24 @@ import { useUserContext } from "./Usuario";
 export default function NovoHabito(props) {
   const weekdays = ["D", "S", "T", "Q", "Q", "S", "S"];
   const weekdaynumber = [0, 1, 2, 3, 4, 5, 6];
-  const { user } = useUserContext();
+  const { user, refresh, setRefresh } = useUserContext();
   const [selectedDays, setSelectedDays] = useState([]);
   const [habit, setHabit] = useState("");
   const { setCreateHabit } = props;
 
-  function saveHabit() {
+  function salvarHabito() {
     const URL = `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits`;
     const body = {
       name: habit,
       days: selectedDays,
     };
     const request = axios.post(URL, body, {
-      headers: {Authorization: `Bearer ${user.token}` }
+      headers: { Authorization: `Bearer ${user.token}` },
     });
 
     request
       .then((ans) => {
+        setRefresh(!refresh)
         console.log(ans.data);
       })
       .catch((err) => {
@@ -59,23 +60,25 @@ export default function NovoHabito(props) {
       ></input>
       <ButtonContainer>{weekdaynumber.map(weekdayRender)}</ButtonContainer>
       <SubmitContainer>
-        <button
+        <SubmitButton
           color={"#52B6FF"}
           bgColor={"#ffffff"}
-          onClick={() => {setCreateHabit(false)}}
+          onClick={() => {
+            setCreateHabit(false);
+          }}
         >
           Cancelar
-        </button>
-        <button
+        </SubmitButton>
+        <SubmitButton
           color={"#ffffff"}
           bgColor={"#52B6FF"}
           onClick={() => {
-            saveHabit();
+            salvarHabito();
             setCreateHabit(false);
           }}
         >
           Salvar
-        </button>
+        </SubmitButton>
       </SubmitContainer>
     </Container>
   );
@@ -123,17 +126,17 @@ const SubmitContainer = styled.div`
   position: absolute;
   bottom: 15px;
   right: 16px;
-
-  button {
-    width: 84px;
-    height: 35px;
-    margin-left: 4px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    color: ${(props) => props.color};
-    background-color: ${(props) => props.bgColor};
-  }
 `;
 
-export { DayButton, ButtonContainer }
+const SubmitButton = styled.button`
+  width: 84px;
+  height: 35px;
+  margin-left: 4px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  color: ${(props) => props.color};
+  background-color: ${(props) => props.bgColor};
+`;
+
+export { DayButton, ButtonContainer };

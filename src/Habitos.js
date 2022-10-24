@@ -8,7 +8,7 @@ import { useUserContext } from "./Usuario";
 import MeuHabito from "./MeuHabito";
 
 export default function Habitos() {
-  const { user } = useUserContext();
+  const { user, refresh } = useUserContext();
   const [userHabits, setUserHabits] = useState([]);
   const [createHabit, setCreateHabit] = useState(false);
   console.log(userHabits);
@@ -26,7 +26,7 @@ export default function Habitos() {
       .catch((err) => {
         console.log(err.response.data);
       });
-  }, []);
+  }, [refresh]);
 
   return (
     <Container>

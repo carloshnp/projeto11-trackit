@@ -6,7 +6,7 @@ import { ButtonContainer, DayButton } from "./NovoHabito";
 import axios from "axios";
 
 export default function MeuHabito(habit) {
-  const { user } = useUserContext();
+  const { user, refresh, setRefresh } = useUserContext();
   const { days, id, name } = habit;
   const weekdaynumber = [0, 1, 2, 3, 4, 5, 6];
 
@@ -25,6 +25,7 @@ export default function MeuHabito(habit) {
     });
     request
       .then((ans) => {
+        setRefresh(!refresh)
         console.log(ans.data);
       })
       .catch((err) => {
